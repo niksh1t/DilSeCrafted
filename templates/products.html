@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Dil Se Crafted - All Products</title>
+    <link href="https://fonts.googleapis.com/css3?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 1;
+            padding: 1;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', 'Noto Sans', sans-serif;
+            color: #334;
+            line-height: 2.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #c4956a;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #a97a4d;
+            transform: translateY(-2px);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .logo span {
+            color: #c4956a;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #c4956a;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons a {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #c4956a;
+            color: #fff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Page Title Section */
+        .page-title {
+            background-color: #f9f5f0;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumbs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .breadcrumbs a:hover {
+            color: #c4956a;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filter-label {
+            font-weight: 500;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            min-width: 150px;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .view-btn.active {
+            background-color: #f5f5f5;
+            border-color: #c4956a;
+        }
+
+        .view-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: #555;
+        }
+
+        .view-btn.active svg {
+            stroke: #c4956a;
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .list-view .products-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: bottom 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            bottom: 0;
+        }
+
+        .product-action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-action-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: #c4956a;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #888;
+            text-decoration: line-through;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            gap: 5px;
+        }
+
+        .stars {
+            display: flex;
+            color: #ffc107;
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* List View Styling */
+        .list-view .product-card {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+
+        .list-view .product-img {
+            height: 100%;
+        }
+
+        .list-view .product-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .list-view .product-title {
+            font-size: 22px;
+        }
+
+        .list-view .product-description {
+            margin: 15px 0;
+            display: block;
+        }
+
+        .product-description {
+            display: none;
+            color: #666;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+            gap: 5px;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover {
+            border-color: #c4956a;
+            color: #c4956a;
+        }
+
+        .pagination-btn.active {
+            background-color: #c4956a;
+            color: #fff;
+            border-color: #c4956a;
+        }
+
+        /* Shopping Cart */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            display: none;
+        }
+
+        .cart {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: #fff;
+            z-index: 300;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close-cart {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #c4956a;
+            font-weight: 600;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 40px;
+            height: 28px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
+        }
+
+        .remove-item {
+            color: #f44336;
+            background: none;
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+
+        .cart-total-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .cart-total-price {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #c4956a;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: #a97a4d;
+        }
+
+ footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 4rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b38b59;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: white;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .list-view .product-card {
+                grid-template-columns: 1fr;
+            }
+
+            .list-view .product-img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart {
+                width: 100%;
+                right: -100%;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Dil Se <span>Crafted</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products" class="active">Shop</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="#contact-us">Contact</a></li>
+
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+                <a href="#" class="user-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a href="#" class="cart-icon" id="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>All Products</h1>
+        <div class="breadcrumbs">
+            <a href="/">Home</a> <span>/</span> <span>Shop</span>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-group">
+            <div class="filter-label">Filter by:</div>
+            <select class="filter-select" id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="necklaces">Necklaces</option>
+                <option value="earrings">Earrings</option>
+                <option value="bracelets">Bracelets</option>
+                <option value="rings">Rings</option>
+                <option value="pendants">Pendants</option>
+            </select>
+            <select class="filter-select" id="price-filter">
+                <option value="all">All Prices</option>
+                <option value="0-100">&#8377;0 - &#8377;100</option>
+                <option value="100-300">&#8377;100 - &#8377;300</option>
+                <option value="300-500">&#8377;300 - &#8377;500</option>
+                <option value="500+">&#8377;500+</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <div class="filter-label">Sort by:</div>
+            <select class="filter-select" id="sort-filter">
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="price-asc">Price (Low to High)</option>
+                <option value="price-desc">Price (High to Low)</option>
+                <option value="rating">Highest Rated</option>
+            </select>
+            <div class="view-options">
+                <button class="view-btn grid-view active" id="grid-view">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </button>
+                <button class="view-btn list-view" id="list-view">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be loaded dynamically with JavaScript -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination will be generated dynamically -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">Dil Se <span>Crafted</span></div>
+                <p>We are dedicated to crafting fine jewelry that celebrates life's special moments with elegance and timeless beauty.</p>
+                <div class="social-icons">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index">Home</a></li>
+                    <li><a href="products">Shop</a></li>
+                    <li><a href="/product">Collections</a></li>
+                    <li><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3 id="contact-us">Contact Us</h3>
+                <ul>
+                    <li>Jaypee University Waknaghat</li>
+                    <li>contact@dilsecrafted.com</li>
+                    <li>+1 (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Dil Se Crafted. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart" id="cart">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <div class="close-cart" id="close-cart">×</div>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added dynamically with JavaScript -->
+        </div>
+        <div class="cart-total">
+            <div class="cart-total-title">Cart Summary</div>
+            <div class="cart-total-price">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">&#8377;0.00</span>
+            </div>
+            <div class="cart-total-price">
+                <span>Shipping</span>
+                <span>Free</span>
+            </div>
+            <div class="cart-total-price">
+                <span><strong>Total</strong></span>
+                <span id="cart-total">&#8377;0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Share order on Instagram</button>
+        </div>
+    </div>
+<!-- JavaScript -->
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>

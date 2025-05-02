@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dil Se Crafted - About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #b38b59;
+        }
+
+        .logo span {
+            color: #333;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav li:hover {
+            color: #b38b59;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons a {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #b38b59;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 200%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #b38b59;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #a37a48;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .story-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .story-content h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .story-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .story-img {
+            flex: 1;
+            min-width: 400px;
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .story-img img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Scales image to cover container, may crop */
+        object-position: center; /* Centers the image */
+        border-radius: 8px;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 4rem 1rem;
+            background-color: #f3f3f3;
+            text-align: center;
+        }
+
+        .section-title {
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+        }
+
+        .team-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Craftsmanship Section */
+        .craftsmanship {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .craftsmanship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .craftsmanship-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .craftsmanship-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .craftsmanship-card p {
+            color: #666;
+        }
+
+        /* Call-to-Action Section */
+        .cta {
+            background-color: #b38b59;
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 4rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b38b59;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: white;
+        }
+
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .social-icons a {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links li:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Shopping Cart */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .cart {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            margin-right: 1rem;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: #b38b59;
+            font-weight: 700;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .quantity {
+            margin: 0 0.5rem;
+        }
+
+        .remove-item {
+            color: #999;
+            margin-left: auto;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cart-total-price {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkout-btn {
+            background-color: #b38b59;
+            color: white;
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: #a37a48;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cart {
+                width: 100%;
+                right: -100%;
+            }
+
+            .story {
+                flex-direction: column;
+            }
+
+            .story-img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Dil Se <span>Crafted</span></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Shop</a></li>
+                    <li><a href="/about" class="active">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" class="search-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+                <a href="#" class="user-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a href="#" class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="/static/images/home.jpg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>About Dil Se Crafted</h1>
+            <p>Crafting timeless jewelry with love, passion, and precision to celebrate life's special moments.</p>
+            <a href="/products" class="btn">Explore Our Collection</a>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <p>
+                Sab kuch shuru hua ek choti si mitti ki butterfly se.
+                Ek din maine sirf shauk mein clay uthaya, aur usse ek butterfly banayi – aur us moment mein mujhe samajh aaya, ki creativity ke raaste par chalna hai.
+                Woh butterfly sirf ek art piece nahi thi, woh meri journey ka pehla kadam tha.</p>
+
+            <p>Mainne alag-alag materials ke saath experiment kiya – kabhi kuch tikta nahi, kabhi kuch tut jaata tha. Par har baar maine seekha, aur har baar main aur behtar bani.
+            Finally, maine woh material dhoondh nikala jo strong bhi tha aur sundarta bhi barkaraar rakhta tha.</p>
+           <p>Fir maine apna pehla stall lagaya – aur wahi se Dil Se Crafted ka safar shuru hua. Har piece jo main banati hoon, woh sirf ek jewellery item nahi hota – woh meri feelings, mera passion aur mera art hota hai. Yeh brand mere dil se nikla hai, isliye iska naam rakha – Dil Se Crafted.</p>
+            Aaj bhi jab koi mere haathon ka bana piece pehenta hai, toh lagta hai jaise mera ek chhota sa hissa unke saath chala gaya hai – pyaar, mehnat aur creativity ke saath.</p>
+       </div>
+        <div class="story-img">
+            <img src="/static/images/about2.jpg">
+        </div>
+    </section>
+
+
+    <!-- Craftsmanship Section -->
+    <section class="craftsmanship">
+        <div class="section-title">
+            <h2>Our Craftsmanship</h2>
+            <p>Every piece is a testament to our commitment to quality and artistry.</p>
+        </div>
+        <div class="craftsmanship-grid">
+            <div class="craftsmanship-card">
+                <h3>Handcrafted Excellence</h3>
+                <p>Our artisans use time-honored techniques to create jewelry with unparalleled precision and care.</p>
+            </div>
+            <div class="craftsmanship-card">
+                <h3>Premium Materials</h3>
+                <p>We source the finest metals and gemstones, ensuring durability and brilliance in every piece.</p>
+            </div>
+            <div class="craftsmanship-card">
+                <h3>Timeless Designs</h3>
+                <p>Our creations blend classic elegance with modern trends, making them perfect for any occasion.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta">
+        <h2>Join Our Journey</h2>
+        <p>Discover the beauty of handcrafted jewelry and become part of the Dil Se Crafted family. Explore our collections or reach out to create something uniquely yours.</p>
+        <a href="/products" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">Dil Se <span>Crafted</span></div>
+                <p>We are dedicated to crafting fine jewelry that celebrates life's special moments with elegance and timeless beauty.</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/rosegullaa/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Shop</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>Jaypee University Waknaghat</li>
+                    <li>contact@dilsecrafted.com</li>
+                    <li>+1 (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025 Dil Se Crafted. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart -->
+    <div class="cart-overlay"></div>
+    <div class="cart">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <div class="close-cart">×</div>
+        </div>
+        <div class="cart-items">
+            <p>Your cart is empty.</p>
+        </div>
+        <div class="cart-total">
+            <div class="cart-total-title">Cart Summary</div>
+            <div class="cart-total-price">
+                <span>Subtotal</span>
+                <span>INR 0.00</span>
+            </div>
+            <div class="cart-total-price">
+                <span>Shipping</span>
+                <span>Free</span>
+            </div>
+            <div class="cart-total-price">
+                <span><strong>Total</strong></span>
+                <span>INR 0.00</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+</body>
+</html>
